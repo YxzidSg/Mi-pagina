@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agencia de Viajes México</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+text-align:center;
+background:linear-gradient(to bottom,#00c6ff,#0072ff);
+color:white;
+overflow-x:hidden;
+}
+.pagina{
+min-height:100vh;
+padding:40px;
+}
+.destino{
+background:white;
+color:black;
+width:280px;
+margin:20px auto;
+padding:20px;
+border-radius:20px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+cursor:pointer;
+transition:0.3s;
+}
+.destino:hover{
+transform:scale(1.05);
+}
+#infoDestino{
+display:none;
+margin-top:30px;
+}
+#imagenDestino{
+width:60%;
+border-radius:20px;
+box-shadow:0 0 20px black;
+}
+button{
+padding:15px 30px;
+font-size:18px;
+background:gold;
+border:none;
+border-radius:15px;
+cursor:pointer;
+margin:20px;
+}
+button:hover{
+background:orange;
+}
+.estrella{
+position:fixed;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+opacity:0.7;
+animation:brillar 2s infinite alternate;
+}
+@keyframes brillar{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+.avion{
+position:fixed;
+top:120px;
+font-size:40px;
+animation:volar 10s linear infinite;
+}
+@keyframes volar{
+from{left:-100px;}
+to{left:110%;}
+}
+.nube{
+position:fixed;
+font-size:40px;
+top:60px;
+animation:moverNube 60s linear infinite;
+}
+.nube2{
+top:150px;
+animation-duration:80s;
+}
+.nube3{
+top:230px;
+animation-duration:70s;
+}
+@keyframes moverNube{
+from{left:-100px;}
+to{left:110%;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="pagina">
+
+<h1>🌴 Agencia de Viajes México</h1>
+
+<div class="avion">🛩</div>
+
+<div class="nube">☁️</div>
+<div class="nube nube2">☁️</div>
+<div class="nube nube3">☁️</div>
+
+<p>Descubre los destinos más increíbles del país ✈️</p>
+
+<button onclick="activarAudio()">🌊Activar🐚</button>
+
+<audio id="audioPlaya">
+<source src="audio/playa.mp3" type="audio/mpeg">
+</audio>
+
+<div class="destino" onclick="mostrarDestino('cancun')">
+<h2>Cancún</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$51,000 MXN</strong></p>
+</div>
+
+<div class="destino" onclick="mostrarDestino('acapulco')">
+<h2>Acapulco</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$39,000 MXN</strong></p>
+</div>
+<div class="destino" onclick="mostrarDestino('cabos')">
+<h2>Los Cabos</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$25,000 MXN</strong></p>
+</div>
+<div class="destino" onclick="mostrarDestino('oaxaca')">
+<h2>Oaxaca</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$15,000 MXN</strong></p>
+</div>
+<div class="destino" onclick="mostrarDestino('cdmx')">
+<h2>Ciudad de México</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$31,000 MXN</strong></p>
+</div>
+<div class="destino" onclick="mostrarDestino('vallarta')">
+<h2>Puerto Vallarta</h2>
+<p>Haz clic para ver promoción</p>
+<p><strong>$35,000 MXN</strong></p>
+</div>
+<div id="infoDestino">
+
+<h2 id="tituloDestino"></h2>
+<img id="imagenDestino">
+<p id="textoDestino"></p>
+<button onclick="reservarViaje()">✈️ Reservar viaje</button>
+<p id="mensajeReserva"></p>
+
+</div>
+</div>
+
+<script>
+
+function activarAudio(){
+let audio=document.getElementById("audioPlaya");
+audio.play();
+}
+for(let i=0;i<40;i++){
+let estrella=document.createElement("div");
+estrella.className="estrella";
+estrella.style.top=Math.random()*100+"%";
+estrella.style.left=Math.random()*100+"%";
+document.body.appendChild(estrella);
+}
+function mostrarDestino(lugar){
+let titulo=document.getElementById("tituloDestino");
+let imagen=document.getElementById("imagenDestino");
+let texto=document.getElementById("textoDestino");
+let info=document.getElementById("infoDestino");
+
+info.style.display="block";
+if(lugar=="cancun"){
+titulo.innerText="Cancún";
+imagen.src="img/cancun.JPEG";
+texto.innerText="Disfruta playas de arena blanca y aguas turquesa.";
+}
+if(lugar=="acapulco"){
+titulo.innerText="Acapulco";
+imagen.src="img/acapulco.JPEG";
+texto.innerText="Vive atardeceres increíbles y hermosas playas.";
+}
+if(lugar=="cabos"){
+titulo.innerText="Los Cabos";
+imagen.src="img/cabos.JPEG";
+texto.innerText="Paisajes donde el desierto se encuentra con el mar.";
+}
+if(lugar=="oaxaca"){
+titulo.innerText="Oaxaca";
+imagen.src="img/oaxaca.JPEG";
+texto.innerText="Un destino lleno de cultura, tradiciones y deliciosa gastronomía.";
+}
+if(lugar=="cdmx"){
+titulo.innerText="Ciudad de México";
+imagen.src="img/mexico.JPEG";
+texto.innerText="Ofrece museos, historia, parques y mucha vida cultural.";
+}
+if(lugar=="vallarta"){
+titulo.innerText="Puerto Vallarta";
+imagen.src="img/puerto.JPEG";
+texto.innerText="Un destino hermoso con playa, atardeceres y actividades acuáticas.";
+}
+}
+function reservarViaje(){
+let mensaje=document.getElementById("mensajeReserva");
+mensaje.innerText="✅ Tu solicitud de viaje fue enviada.";
+}
+//*Holaa profe :D*//
+
+</script>
+
+</body>
+</html>
